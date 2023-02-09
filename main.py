@@ -29,7 +29,9 @@ class TasksListAPI(Resource):
 
 class TaskAPI(Resource):
     def get(self, id):
-        return jsonify({'Task': 'get'})
+        db_sess = db_session.create_session()
+        task = db_sess.query(Task).filter(Task.id == id).first()
+        return jsonify({'Task': task.full_information()})
 
     def put(self, id):
         return jsonify({'Task': 'put'})
