@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/dmitrii1011sg/api_todos.git">
-    <img src="image_for_readme/logo.png" alt="Logo" width="80" height="80">
+    <img src="doc/logo.png" alt="Logo" width="200" style="margin-top: 30px;">
   </a>
 
 <h3 align="center">Todos API</h3>
@@ -83,8 +83,8 @@ To run the api follow these simple steps.
 <!-- CONTACT -->
 ## Contact
 
-Dmitrii Gorshkov - [@telegram_handle](https://t.me/dmitrii1011) - dmitrii1011sg@gmail.com </br>
-Valeria Sklarova - [@telegram_handle](https://t.me/chuuiqs) - avoralks101@gmail.com
+Dmitrii Gorshkov - [@telegram_handle](https://t.me/dmitrii1011) - dmitrii1011sg@gmail.com - Developer </br>
+Valeria Sklarova - [@telegram_handle](https://t.me/chuuiqs) - avoralks101@gmail.com - Developer
 
 Project Link: [https://github.com/dmitrii1011sg/api_todos.git](https://github.com/dmitrii1011sg/api_todos.git)
 
