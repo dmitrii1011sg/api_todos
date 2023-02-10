@@ -3,7 +3,7 @@ from flask import Flask, jsonify, request
 from dotenv import load_dotenv
 from flask_restful import Resource, Api
 
-from data.tast_model import Task
+from data.task_model import Task
 
 load_dotenv()
 
