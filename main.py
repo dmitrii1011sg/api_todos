@@ -27,6 +27,7 @@ class TasksListAPI(Resource):
         db_sess.commit()
         return jsonify(new_task.full_information())
 
+
 class TaskAPI(Resource):
     def get(self, id):
         db_sess = db_session.create_session()
@@ -38,10 +39,9 @@ class TaskAPI(Resource):
 
     def delete(self, id):
         db_sess = db_session.create_session()
-        delete_task = Task.get(id)
-        db_sess.delete(delete_task)
+        db_sess.query(Task).filter(Task.id == id).delete()
         db_sess.commit()
-        return jsonify({'Task': 'delete'})
+        return '', 204
 
 
 api.add_resource(TasksListAPI, '/api/task/')
