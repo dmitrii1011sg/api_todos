@@ -37,6 +37,10 @@ class TaskAPI(Resource):
         return jsonify({'Task': 'put'})
 
     def delete(self, id):
+        db_sess = db_session.create_session()
+        delete_task = Task.get(id)
+        db_sess.delete(delete_task)
+        db_sess.commit()
         return jsonify({'Task': 'delete'})
 
 
