@@ -24,7 +24,10 @@ class TasksListAPI(Resource):
 
     def post(self):
         json_data = request.get_json(force=True)
-        new_task = Task(title=json_data['title'], content=json_data['content'], status=json_data['status'])
+        new_task = Task(title=json_data['title'],
+                        content=json_data['content'],
+                        status=json_data['status'],
+                        priority=json_data['priority'])
 
         db_sess = db_session.create_session()
         db_sess.add(new_task)
