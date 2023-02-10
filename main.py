@@ -1,15 +1,19 @@
 from data import db_session
 from flask import Flask, jsonify, request
-from dotenv import load_dotenv
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api, abort
 
 from data.task_model import Task
 
-load_dotenv()
 
 app = Flask(__name__)
 api = Api(app)
 
+
+def abort_if_task_doesnt_exist(id):
+    db_sess = db_session.create_session()
+    task = db_sess.query(Task).filter(Task.id == id).first()
+    if not task:
+        abort(404, error_code="404", message=f"Task {id} doesn't exist")
 
 class TasksListAPI(Resource):
     def get(self):
@@ -30,22 +34,21 @@ class TasksListAPI(Resource):
 
 class TaskAPI(Resource):
     def get(self, id):
+        abort_if_task_doesnt_exist(id)
         db_sess = db_session.create_session()
         task = db_sess.query(Task).filter(Task.id == id).first()
-        if task:
-            return jsonify(task.full_information())
-        return {"error": 404}
+        return jsonify(task.full_information())
 
     def put(self, id):
+        abort_if_task_doesnt_exist(id)
         json_data = request.get_json(force=True)
         db_sess = db_session.create_session()
-        if not db_sess.query(Task).filter(Task.id == id).first():
-            return {"error": 404}
         db_sess.query(Task).filter(Task.id == id).update(json_data)
         db_sess.commit()
         return jsonify(db_sess.query(Task).filter(Task.id == id).first().full_information())
 
     def delete(self, id):
+        abort_if_task_doesnt_exist(id)
         db_sess = db_session.create_session()
         db_sess.query(Task).filter(Task.id == id).delete()
         db_sess.commit()
