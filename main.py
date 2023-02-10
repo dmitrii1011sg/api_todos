@@ -32,10 +32,18 @@ class TaskAPI(Resource):
     def get(self, id):
         db_sess = db_session.create_session()
         task = db_sess.query(Task).filter(Task.id == id).first()
-        return jsonify(task.full_information())
+        if task:
+            return jsonify(task.full_information())
+        return {"error": 404}
 
     def put(self, id):
-        return jsonify({'Task': 'put'})
+        json_data = request.get_json(force=True)
+        db_sess = db_session.create_session()
+        if not db_sess.query(Task).filter(Task.id == id).first():
+            return {"error": 404}
+        db_sess.query(Task).filter(Task.id == id).update(json_data)
+        db_sess.commit()
+        return jsonify(db_sess.query(Task).filter(Task.id == id).first().full_information())
 
     def delete(self, id):
         db_sess = db_session.create_session()
