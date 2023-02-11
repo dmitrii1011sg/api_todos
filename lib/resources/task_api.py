@@ -1,8 +1,6 @@
 from flask import jsonify, request
 from flask_restful import Resource
 
-from data import db_session
-from data.task_model import Task
 from lib.database_service.db_service import DatabaseService
 from lib.utils.utils import abort_if_task_doesnt_exist
 
@@ -13,21 +11,16 @@ class TaskAPI(Resource):
 
     def get(self, id_task):
         abort_if_task_doesnt_exist(id_task)
-        db_sess = db_session.create_session()
-        task = db_sess.query(Task).filter(Task.id == id_task).first()
+        task = self.database_service.get_task_by_id(id_task)
         return jsonify(task.full_information())
 
     def put(self, id_task):
         abort_if_task_doesnt_exist(id_task)
         json_data = request.get_json(force=True)
-        db_sess = db_session.create_session()
-        db_sess.query(Task).filter(Task.id == id_task).update(json_data)
-        db_sess.commit()
-        return jsonify(db_sess.query(Task).filter(Task.id == id_task).first().full_information())
+        self.database_service.update_task_by_id(id_task, json_data)
+        return jsonify(self.database_service.get_task_by_id(id_task).full_information())
 
     def delete(self, id_task):
         abort_if_task_doesnt_exist(id_task)
-        db_sess = db_session.create_session()
-        db_sess.query(Task).filter(Task.id == id_task).delete()
-        db_sess.commit()
+        self.database_service.delete_task_by_id(id_task)
         return '', 204
