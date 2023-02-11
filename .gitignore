@@ -3,3 +3,4 @@ venv
 __pycache__
 **/test.py
 .env
+/database/database.db

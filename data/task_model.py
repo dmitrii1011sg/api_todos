@@ -30,6 +30,7 @@ class Task(SqlAlchemyBase):
 
     def shortest_information(self):
         return {
+            'id': self.id,
             'title': self.title,
             'created_at': self.created_date,
             'status': self.status.name,
@@ -38,6 +39,7 @@ class Task(SqlAlchemyBase):
 
     def full_information(self):
         return {
+            'id': self.id,
             'title': self.title,
             'content': self.content,
             'status': self.status.name,
