@@ -4,12 +4,15 @@ from flask_restful import Resource
 from data import db_session
 from data.category_model import Category
 from data.task_model import Task
+from lib.database_service.db_service import DatabaseService
 
 
 class TaskSetsAPI(Resource):
+    def __init__(self):
+        self.database_service = DatabaseService()
+
     def get(self):
-        db_sess = db_session.create_session()
-        sets_list = list(map(lambda x: x.shortest_information(), db_sess.query(Category).all()))
+        sets_list = self.database_service.get_all_sets()
         total = len(sets_list)
         return jsonify({'sets': sets_list, 'total': total})
 

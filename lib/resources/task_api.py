@@ -3,10 +3,14 @@ from flask_restful import Resource
 
 from data import db_session
 from data.task_model import Task
+from lib.database_service.db_service import DatabaseService
 from lib.utils.utils import abort_if_task_doesnt_exist
 
 
 class TaskAPI(Resource):
+    def __init__(self):
+        self.database_service = DatabaseService()
+
     def get(self, id_task):
         abort_if_task_doesnt_exist(id_task)
         db_sess = db_session.create_session()

@@ -3,12 +3,15 @@ from flask_restful import Resource
 
 from data import db_session
 from data.task_model import Task
+from lib.database_service.db_service import DatabaseService
 
 
 class TasksListAPI(Resource):
+    def __init__(self):
+        self.database_service = DatabaseService()
+
     def get(self):
-        db_sess = db_session.create_session()
-        tasks_list = list(map(lambda x: x.shortest_information(), db_sess.query(Task).all()))
+        tasks_list = self.database_service.get_all_tasks()
         total = len(tasks_list)
         return jsonify({'tasks': tasks_list, 'total': total})
 
