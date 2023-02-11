@@ -1,5 +1,5 @@
 from data import db_session
-from data.category_model import Category
+from data.taskset_model import TaskSet
 from data.task_model import Task
 
 
@@ -40,11 +40,11 @@ class DatabaseService:
 
     def get_all_sets(self):
         db_sess = db_session.create_session()
-        sets_list = list(map(lambda x: x.shortest_information(), db_sess.query(Category).all()))
+        sets_list = list(map(lambda x: x.shortest_information(), db_sess.query(TaskSet).all()))
         return sets_list
 
     def create_set(self, param):
-        new_set = Category(name=param['name'], description=param['description'])
+        new_set = TaskSet(name=param['name'], description=param['description'])
 
         db_sess = db_session.create_session()
         db_sess.add(new_set)
