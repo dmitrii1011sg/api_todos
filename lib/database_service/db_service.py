@@ -12,6 +12,17 @@ class DatabaseService:
         tasks_list = list(map(lambda x: x.shortest_information(), db_sess.query(Task).all()))
         return tasks_list
 
+    def create_task(self, param):
+        new_task = Task(title=param['title'],
+                        content=param['content'],
+                        status=param['status'],
+                        priority=param['priority'])
+
+        db_sess = db_session.create_session()
+        db_sess.add(new_task)
+        db_sess.commit()
+        return new_task.full_information()
+
     def get_task_by_id(self, id_task):
         db_sess = db_session.create_session()
         task = db_sess.query(Task).filter(Task.id == id_task).first()
@@ -31,3 +42,11 @@ class DatabaseService:
         db_sess = db_session.create_session()
         sets_list = list(map(lambda x: x.shortest_information(), db_sess.query(Category).all()))
         return sets_list
+
+    def create_set(self, param):
+        new_set = Category(name=param['name'], description=param['description'])
+
+        db_sess = db_session.create_session()
+        db_sess.add(new_set)
+        db_sess.commit()
+        return new_set.full_information()
