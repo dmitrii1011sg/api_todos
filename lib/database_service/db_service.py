@@ -40,6 +40,11 @@ class DatabaseService:
         sets_list = list(map(lambda x: x.shortest_information(), db_sess.query(TaskSet).all()))
         return sets_list
 
+    def get_set_by_id(self, id_set):
+        db_sess = db_session.create_session()
+        set = db_sess.query(TaskSet).filter(TaskSet.id == id_set).first()
+        return set
+
     def create_set(self, param):
         new_set = TaskSet(name=param['name'], description=param['description'])
 
