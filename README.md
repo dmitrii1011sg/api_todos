@@ -76,6 +76,10 @@ To run the api follow these simple steps.
    ```sh
    pip install -r requirements.txt
    ```
+3. Create .env with TOKEN
+   ```sh
+   TOKEN="your token"
+   ```
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
 
