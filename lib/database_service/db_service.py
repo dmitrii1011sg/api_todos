@@ -24,7 +24,6 @@ class DatabaseService:
             return user.get_data()
         return False
 
-
     def get_all_tasks(self):
         db_sess = db_session.create_session()
         tasks_list = list(map(lambda x: x.shortest_information(), db_sess.query(Task).all()))

@@ -4,7 +4,6 @@ from flask_restful import Resource, abort
 
 from lib.database_service.db_service import DatabaseService
 from lib.parsers.auth_user_parser import parser_auth_user
-from lib.utils.utils import abort_if_task_doesnt_exist
 
 
 class AuthAPI(Resource):
@@ -21,4 +20,4 @@ class AuthAPI(Resource):
             user = self.database_service.check_user(args['login'], args['password'])
             flask_login.login_user(user)
             return jsonify(user.get_data())
-        abort(404,  status=404, error=f"Login or password invalid")
+        abort(404, status=404, error=f"Login or password invalid")

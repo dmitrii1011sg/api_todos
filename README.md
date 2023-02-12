@@ -42,6 +42,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 <img src="doc/img1.png" alt="screen postman">
@@ -49,9 +50,7 @@ Simple API for Todos. The project implements all the main functions. More functi
 The project also has postman with tests for all requests.
 <p align="right">(<a href="#top">Back to top</a>)</p>
 
-
-
-### Build with 
+### Build with
 
 * [Flask](https://pypi.org/project/Flask/)
 * [Flask-RESTful](https://pypi.org/project/Flask-RESTful/)
@@ -62,13 +61,14 @@ The project also has postman with tests for all requests.
 
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To run the api follow these simple steps.
 
 ### Installation
 
-1. Clone repo 
+1. Clone repo
    ```sh
    git clone https://github.com/dmitrii1011sg/api_todos.git
    ```
@@ -77,10 +77,10 @@ To run the api follow these simple steps.
    pip install -r requirements.txt
    ```
 
-
 <p align="right">(<a href="#top">Back to top</a>)</p>
 
 <!-- CONTACT -->
+
 ## Contact
 
 Dmitrii Gorshkov - [@telegram_handle](https://t.me/dmitrii1011) - dmitrii1011sg@gmail.com - Developer </br>
