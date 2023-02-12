@@ -27,6 +27,7 @@ class Task(SqlAlchemyBase):
     status = sqlalchemy.Column(sqlalchemy.Enum(StatusEnum))
     priority = sqlalchemy.Column(sqlalchemy.Enum(PriorityEnum))
     set_id = sqlalchemy.Column(sqlalchemy.Integer, default=None)
+    user_id = sqlalchemy.Column(sqlalchemy.Integer, nullable=False)
 
     def shortest_information(self):
         return {

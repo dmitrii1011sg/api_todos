@@ -8,6 +8,7 @@ class TaskSet(SqlAlchemyBase):
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
     name = sqlalchemy.Column(sqlalchemy.String(20))
     description = sqlalchemy.Column(sqlalchemy.String(400), nullable=True)
+    user_id = sqlalchemy.Column(sqlalchemy.Integer, nullable=False)
 
     def shortest_information(self):
         return {
