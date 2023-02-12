@@ -1,9 +1,30 @@
 from data import db_session
 from data.taskset_model import TaskSet
 from data.task_model import Task
+from data.user_model import User
 
 
 class DatabaseService:
+    def check_user(self, login: str, password: str):
+        db_sess = db_session.create_session()
+        user = db_sess.query(User).filter(User.login == login).first()
+        if user and user.check_password(password):
+            return user
+        return False
+
+    def create_user(self, login: str, name: str, password: str):
+        db_sess = db_session.create_session()
+        user = db_sess.query(User).filter(User.login == login).first()
+        if not user:
+            new_user = User(name=name if name else login, login=login)
+            print(new_user)
+            new_user.set_password(password)
+            db_sess.add(new_user)
+            db_sess.commit()
+            return user.get_data()
+        return False
+
+
     def get_all_tasks(self):
         db_sess = db_session.create_session()
         tasks_list = list(map(lambda x: x.shortest_information(), db_sess.query(Task).all()))
