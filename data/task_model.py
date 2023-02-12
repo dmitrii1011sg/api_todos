@@ -26,15 +26,16 @@ class Task(SqlAlchemyBase):
     content = sqlalchemy.Column(sqlalchemy.String)
     status = sqlalchemy.Column(sqlalchemy.Enum(StatusEnum))
     priority = sqlalchemy.Column(sqlalchemy.Enum(PriorityEnum))
-    category_set_id = sqlalchemy.Column(sqlalchemy.Integer, default=-1)
+    set_id = sqlalchemy.Column(sqlalchemy.Integer, default=None)
 
     def shortest_information(self):
         return {
             'id': self.id,
             'title': self.title,
             'created_at': self.created_date,
-            'status': self.status.name,
-            'priority': self.priority.name
+            'status': self.status.name if self.status else None,
+            'priority': self.priority.name if self.priority else None,
+            'set_id': self.set_id
         }
 
     def full_information(self):
@@ -42,7 +43,8 @@ class Task(SqlAlchemyBase):
             'id': self.id,
             'title': self.title,
             'content': self.content,
-            'status': self.status.name,
-            'priority': self.priority.name,
+            'status': self.status.name if self.status else None,
+            'priority': self.priority.name if self.priority else None,
             'created_at': self.created_date,
+            'set_id': self.set_id
         }

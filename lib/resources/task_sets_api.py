@@ -2,6 +2,7 @@ from flask import jsonify, request
 from flask_restful import Resource
 
 from lib.database_service.db_service import DatabaseService
+from lib.parsers.create_set import parser_create_set
 
 
 class TaskSetsAPI(Resource):
@@ -14,6 +15,7 @@ class TaskSetsAPI(Resource):
         return jsonify({'sets': sets_list, 'total': total})
 
     def post(self):
-        json_data = request.get_json(force=True)
-        new_set = self.database_service.create_set(json_data)
+        request.get_json(force=True)
+        args = parser_create_set.parse_args()
+        new_set = self.database_service.create_set(args)
         return jsonify(new_set)
