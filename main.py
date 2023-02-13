@@ -9,12 +9,9 @@ from flask import Flask
 from flask_restful import Api
 
 from data.user_model import User
-from lib.resources.auth_api import AuthAPI
-from lib.resources.sign_up_api import SignUpAPI
-from lib.resources.task_api import TaskAPI
-from lib.resources.task_set_api import TaskSetAPI, SetAPI
-from lib.resources.task_sets_api import TaskSetsAPI
-from lib.resources.tasks_list_api import TasksListAPI
+from lib.resources.task_api_ import TasksAPI, TaskAPI
+from lib.resources.task_sets_api_ import SetsAPI, SetAPI, SetTasksAPI
+from lib.resources.users_api import AuthAPI, SignUpAPI
 
 load_dotenv()
 
@@ -40,11 +37,11 @@ def logout():
 
 api.add_resource(AuthAPI, '/api/auth/')
 api.add_resource(SignUpAPI, '/api/signup/')
-api.add_resource(TasksListAPI, '/api/task/')
+api.add_resource(TasksAPI, '/api/task/')
 api.add_resource(TaskAPI, '/api/task/<int:id_task>')
-api.add_resource(TaskSetsAPI, '/api/task-sets/')
-api.add_resource(TaskSetAPI, '/api/task-sets/<int:id_set>')
-api.add_resource(SetAPI, '/api/task-sets/<int:id_set>/tasks')
+api.add_resource(SetsAPI, '/api/task-sets/')
+api.add_resource(SetAPI, '/api/task-sets/<int:id_set>')
+api.add_resource(SetTasksAPI, '/api/task-sets/<int:id_set>/tasks')
 
 if __name__ == '__main__':
     db_session.global_init("database/database.db")
