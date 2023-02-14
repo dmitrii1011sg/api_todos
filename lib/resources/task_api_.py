@@ -45,4 +45,4 @@ class TaskAPI(Resource):
         abort_if_user_is_not_auth()
         abort_if_task_doesnt_exist(id_task)
         self.database_service.delete_task_by_id(id_task)
-        return '', 204
+        return '', 200

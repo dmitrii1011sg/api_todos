@@ -73,7 +73,7 @@ class DatabaseService:
         return set
 
     def create_set(self, param: dict) -> dict:
-        new_set = TaskSet(name=param['name'], description=param['description'])
+        new_set = TaskSet(name=param['name'], description=param['description'], user_id=flask_login.current_user.id)
 
         db_sess = db_session.create_session()
         db_sess.add(new_set)

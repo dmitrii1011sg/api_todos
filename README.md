@@ -46,7 +46,7 @@
 ## About The Project
 
 <img src="doc/img1.png" alt="screen postman">
-Simple API for Todos. The project implements all the main functions. More functionality is planned to be added in the future. </br>
+Simple API for Todos. The project implements all the main functions. </br>
 The project also has postman with tests for all requests.
 <p align="right">(<a href="#top">Back to top</a>)</p>
 
@@ -54,7 +54,9 @@ The project also has postman with tests for all requests.
 
 * [Flask](https://pypi.org/project/Flask/)
 * [Flask-RESTful](https://pypi.org/project/Flask-RESTful/)
+* [Flask-Login](https://pypi.org/project/Flask-Login/)
 * [SQLAlchemist](https://pypi.org/project/SQLAlchemy/)
+* [python-dotenv](https://pypi.org/project/python-dotenv/)
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
 
