@@ -10,6 +10,30 @@
 			"item": [
 				{
 					"name": "Auth DetTopf",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test login\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.login).to.string;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.string;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -38,6 +62,30 @@
 				},
 				{
 					"name": "SignUp DerTopf",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test login\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.login).to.string;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.string;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -66,6 +114,30 @@
 				},
 				{
 					"name": "Auth Avoralks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test login\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.login).to.string;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.string;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -94,6 +166,30 @@
 				},
 				{
 					"name": "SignUp Avoralks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test login\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.login).to.string;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.string;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -122,6 +218,30 @@
 				},
 				{
 					"name": "Get Current User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test login\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.login).to.string;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.string;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -146,9 +266,38 @@
 				},
 				{
 					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
 					},
 					"response": []
 				}
@@ -167,6 +316,17 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"\r",
+									"pm.test(\"Your test sets\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.sets).to.be.an(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test total\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.total).be.a(\"number\");\r",
+									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript"
@@ -204,6 +364,21 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.be.a('number');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test description\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.description).to.string;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.string;\r",
 									"});\r",
 									""
 								],
@@ -243,6 +418,21 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"\r",
+									"pm.test(\"Your test id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.be.a('number');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test description\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.description).to.string;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.string;\r",
+									"});\r",
 									""
 								],
 								"type": "text/javascript"
@@ -254,7 +444,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"new\",\r\n    \"description\": \"new\"\r\n}"
+							"raw": "{\r\n    \"title\": \"new\",\r\n    \"description\": \"new\"\r\n}"
 						},
 						"url": {
 							"raw": "http://127.0.0.1:5000/api/task-sets/",
@@ -285,6 +475,17 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"\r",
+									"pm.test(\"Your test tasks\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.tasks).to.be.an(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test total\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.total).be.a(\"number\");\r",
+									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript"
@@ -325,33 +526,27 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Check total\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.total).to.be.a('number');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Check tasks\", function () {\r",
+									"pm.test(\"Your test tasks\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData.tasks).to.be.an(\"array\");\r",
 									"});\r",
+									"\r",
+									"pm.test(\"Your test total\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.total).be.a(\"number\");\r",
+									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"status\": \"DONE\"\r\n}"
-						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/api/task",
+							"raw": "http://127.0.0.1:5000/api/task/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -362,7 +557,8 @@
 							"port": "5000",
 							"path": [
 								"api",
-								"task"
+								"task",
+								""
 							]
 						}
 					},
@@ -377,6 +573,21 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.be.a('number');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test content\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.content).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.be.a('string');\r",
 									"});\r",
 									""
 								],
@@ -417,7 +628,20 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
+									"pm.test(\"Your test id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.be.a('number');\r",
+									"});\r",
 									"\r",
+									"pm.test(\"Your test content\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.content).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.be.a('string');\r",
+									"});\r",
 									""
 								],
 								"type": "text/javascript"
@@ -458,7 +682,23 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
-									"});"
+									"});\r",
+									"\r",
+									"pm.test(\"Your test id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.be.a('number');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test content\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.content).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test title\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.be.a('string');\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -469,7 +709,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"set_id\": 2}"
+							"raw": "{\r\n    \"set_id\": 2\r\n}"
 						},
 						"url": {
 							"raw": "http://127.0.0.1:5000/api/task/1",
