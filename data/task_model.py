@@ -21,12 +21,12 @@ class Task(SqlAlchemyBase):
     __tablename__ = 'tasks'
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
-    created_date = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
     title = sqlalchemy.Column(sqlalchemy.String(150))
-    content = sqlalchemy.Column(sqlalchemy.String)
-    status = sqlalchemy.Column(sqlalchemy.Enum(StatusEnum))
-    priority = sqlalchemy.Column(sqlalchemy.Enum(PriorityEnum))
+    content = sqlalchemy.Column(sqlalchemy.String(2000))
+    status = sqlalchemy.Column(sqlalchemy.Enum(StatusEnum), default=None)
+    priority = sqlalchemy.Column(sqlalchemy.Enum(PriorityEnum), default=None)
     set_id = sqlalchemy.Column(sqlalchemy.Integer, default=None)
+    created_at = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.datetime.now)
     user_id = sqlalchemy.Column(sqlalchemy.Integer, nullable=False)
 
     def shortest_information(self):
