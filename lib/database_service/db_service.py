@@ -74,5 +74,5 @@ class DatabaseService:
 
     def get_task_by_set_id(self, set_id: int):
         db_sess = db_session.create_session()
-        return db_sess.query(Task).filter(and_(TaskSet.id == set_id,
-                                               TaskSet.user_id == flask_login.current_user.id)).all()
+        return db_sess.query(Task).filter(and_(Task.set_id == set_id,
+                                               Task.user_id == flask_login.current_user.id)).all()
