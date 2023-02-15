@@ -33,7 +33,7 @@ class Task(SqlAlchemyBase):
         return {
             'id': self.id,
             'title': self.title,
-            'created_at': self.created_date,
+            'created_at': self.created_at,
             'status': self.status.name if self.status else None,
             'priority': self.priority.name if self.priority else None,
             'set_id': self.set_id
@@ -46,6 +46,6 @@ class Task(SqlAlchemyBase):
             'content': self.content,
             'status': self.status.name if self.status else None,
             'priority': self.priority.name if self.priority else None,
-            'created_at': self.created_date,
+            'created_at': self.created_at,
             'set_id': self.set_id
         }

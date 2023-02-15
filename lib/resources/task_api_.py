@@ -12,16 +12,20 @@ class TasksAPI(Resource):
 
     def get(self):
         abort_if_user_is_not_auth()
-        tasks_list = self.database_service.get_all_tasks()
-        total = len(tasks_list)
-        return jsonify({'tasks': tasks_list, 'total': total})
+        tasks_list = list(map(lambda ta: ta.shortest_information(), self.database_service.get_all_tasks()))
+        response = jsonify({
+            'tasks': tasks_list,
+            'total': len(tasks_list)
+        })
+        return response
 
     def post(self):
         abort_if_user_is_not_auth()
         request.get_json(force=True)
         args = parser_create_task.parse_args()
         new_task = self.database_service.create_task(args)
-        return jsonify(new_task)
+        response = jsonify(new_task)
+        return response
 
 
 class TaskAPI(Resource):
@@ -32,14 +36,16 @@ class TaskAPI(Resource):
         abort_if_user_is_not_auth()
         abort_if_task_doesnt_exist(id_task)
         task = self.database_service.get_task_by_id(id_task)
-        return jsonify(task.full_information())
+        response = jsonify(task.full_information())
+        return response
 
     def put(self, id_task):
         abort_if_user_is_not_auth()
         abort_if_task_doesnt_exist(id_task)
         json_data = request.get_json(force=True)
         self.database_service.update_task_by_id(id_task, json_data)
-        return jsonify(self.database_service.get_task_by_id(id_task).full_information())
+        response = jsonify(self.database_service.get_task_by_id(id_task).full_information())
+        return response
 
     def delete(self, id_task):
         abort_if_user_is_not_auth()

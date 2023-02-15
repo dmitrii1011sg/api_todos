@@ -12,16 +12,20 @@ class SetsAPI(Resource):
 
     def get(self):
         abort_if_user_is_not_auth()
-        sets_list = self.database_service.get_all_sets()
-        total = len(sets_list)
-        return jsonify({'sets': sets_list, 'total': total})
+        sets_list = list(map(lambda se: se.shortest_information(), self.database_service.get_all_sets()))
+        response = jsonify({
+            'sets': sets_list,
+            'total': len(sets_list)
+        })
+        return response
 
     def post(self):
         abort_if_user_is_not_auth()
         request.get_json(force=True)
         args = parser_create_set.parse_args()
         new_set = self.database_service.create_set(args)
-        return jsonify(new_set)
+        response = jsonify(new_set)
+        return response
 
 
 class SetAPI(Resource):
@@ -31,8 +35,9 @@ class SetAPI(Resource):
     def get(self, id_set):
         abort_if_user_is_not_auth()
         abort_if_set_doesnt_exist(id_set)
-        set = self.database_service.get_set_by_id(id_set)
-        return jsonify(set.full_information())
+        task_set = self.database_service.get_set_by_id(id_set)
+        response = jsonify(task_set.full_information())
+        return response
 
 
 class SetTasksAPI(Resource):
@@ -42,5 +47,9 @@ class SetTasksAPI(Resource):
     def get(self, id_set):
         abort_if_user_is_not_auth()
         abort_if_set_doesnt_exist(id_set)
-        tasks = self.database_service.get_task_by_set_id(id_set)
-        return jsonify({"tasks": tasks, "total": len(tasks)})
+        tasks = list(map(lambda ta: ta.shortest_information(), self.database_service.get_task_by_set_id(id_set)))
+        response = jsonify({
+            "tasks": tasks,
+            "total": len(tasks)
+        })
+        return response

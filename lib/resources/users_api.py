@@ -18,7 +18,7 @@ class AuthAPI(Resource):
         request.get_json(force=True)
         args = parser_auth_user.parse_args()
         if args['login'] and args['password']:
-            user = self.database_service.check_user(args['login'], args['password'])
+            user = self.database_service.get_user(args['login'], args['password'])
             flask_login.login_user(user)
             return jsonify(user.get_data())
         abort(404, status=404, error=f"Login or password invalid")
@@ -36,8 +36,7 @@ class SignUpAPI(Resource):
             if user:
                 flask_login.login_user(user)
                 return jsonify(user.get_data())
-            else:
-                abort(404, status=404, error=f"Something went wrong")
+            abort(404, status=404, error=f"Something went wrong")
 
 
 
