@@ -16,12 +16,12 @@ class TaskSet(SqlAlchemyBase):
     def shortest_information(self):
         return {
             'id': self.id,
-            'name': self.title
+            'title': self.title
         }
 
     def full_information(self):
         return {
             'id': self.id,
-            'name': self.title,
+            'title': self.title,
             'description': self.description
         }
