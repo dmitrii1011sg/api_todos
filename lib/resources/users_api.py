@@ -19,8 +19,9 @@ class AuthAPI(Resource):
         args = parser_auth_user.parse_args()
         if args['login'] and args['password']:
             user = self.database_service.get_user(args['login'], args['password'])
-            flask_login.login_user(user)
-            return jsonify(user.get_data())
+            if user:
+                flask_login.login_user(user)
+                return jsonify(user.get_data())
         abort(404, status=404, error=f"Login or password invalid")
 
 
