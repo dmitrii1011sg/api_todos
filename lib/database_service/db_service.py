@@ -7,6 +7,7 @@ from data.task_model import Task
 from data.user_model import User
 
 
+# noinspection PyMethodMayBeStatic
 class DatabaseService:
     def get_user(self, login: str, password: str):
         db_sess = db_session.create_session()

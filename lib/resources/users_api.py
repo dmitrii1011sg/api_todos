@@ -38,6 +38,3 @@ class SignUpAPI(Resource):
                 flask_login.login_user(user)
                 return jsonify(user.get_data())
             abort(404, status=404, error=f"Something went wrong")
-
-
-

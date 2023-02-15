@@ -1,5 +1,3 @@
-from datetime import datetime
-
 import flask_login
 from flask_restful import abort
 from sqlalchemy import and_
