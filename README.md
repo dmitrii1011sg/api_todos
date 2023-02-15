@@ -92,7 +92,7 @@ To run the api follow these simple steps.
 ## Contact
 
 Dmitrii Gorshkov - [@telegram_handle](https://t.me/dmitrii1011) - dmitrii1011sg@gmail.com - Developer </br>
-Valeria Sklarova - [@telegram_handle](https://t.me/chuuiqs) - avoralks101@gmail.com - Developer
+Valeriya Sklyarova - [@telegram_handle](https://t.me/chuuiqs) - avoralks101@gmail.com - Developer
 
 Project Link: [https://github.com/dmitrii1011sg/api_todos.git](https://github.com/dmitrii1011sg/api_todos.git)
 
